@@ -9,4 +9,6 @@ Task #3: Determine if the level of engagement on a campaign topic over a given p
 
 Task #4: Determine if sentiment on a campaign topic over a given period of time is more positive, negative, or neutral compared to another period of time.
 
-Task #5: Find key influencers (on Twitter) who are raising awareness about the campaign topic.Task #6: Describe any key influencer. e.g. name of user,  number of followers/followers in target audience, number of tweets to target audience (e.g. policy makers, decision makers, celebrities).
+Task #5: Find key influencers (on Twitter) who are raising awareness about the campaign topic.
+
+Task #6: Describe any key influencer. e.g. name of user,  number of followers/followers in target audience, number of tweets to target audience (e.g. policy makers, decision makers, celebrities).
