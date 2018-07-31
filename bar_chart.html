@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style> /* set the CSS */
+
+body { font: 12px Arial;}
+
+path { 
+  stroke: steelblue;
+	stroke-width: 2;
+	fill: none;
+}
+
+.axis path,
+.axis line {
+	fill: none;
+	stroke: grey;
+	stroke-width: 1;
+	shape-rendering: crispEdges;
+}
+
+</style>
+
+<body>
+<p>
+W209 Final Project
+</p>
+<svg width="960" height="500"></svg>
+<!-- load the d3.js library -->	
+<script src="http://d3js.org/d3.v4.min.js"></script>
+
+<script>
+
+var fmtCallback = function(row) {
+  row.followers = +row["followers"];
+  row.user = row["screen_name"];
+  return row;
+}
+    
+var svg = d3.select("svg"),
+    margin = {top: 20, right: 20, bottom: 30, left: 70},
+    width = +svg.attr("width") - margin.left - margin.right,
+    height = +svg.attr("height") - margin.top - margin.bottom,
+    g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+var xAxis = g.append("g")
+  .attr("class", "x--axis")
+  .attr("transform", "translate(0," + height + ")");
+
+var yAxis = g.append("g")
+  .attr("class", "y--axis");
+
+var yScale = d3.scaleLinear()
+  .range([ height, 0]);
+
+var xScale = d3.scaleBand()  
+  .padding(0.2)
+  .rangeRound([0, width]);
+
+var dataCallback = function (err, updateData) {
+  if (err) throw err;
+    
+  updateData.forEach(fmtCallback);
+    
+  yScale.domain([0, d3.max(updateData, function (d) { return d.followers; })]);
+  xScale.domain(d3.map(updateData, function (d) { return d.user; }).keys() );
+
+  var barX = function (d) {
+    return xScale(d.user);
+  }; 
+
+  var rects = g.selectAll("rect")
+    .data(updateData);
+  
+  console.log(updateData)
+  
+  rects
+    .enter()
+    .append("rect")
+      .style("fill", "steelblue")
+      .attr("x", barX)
+      .attr("y", function (d) {
+        return yScale(d.followers);
+      })
+      .attr("height", function (d) { 
+        return height - yScale(d.followers);
+      })
+      .attr("width", xScale.bandwidth());
+
+  xAxis.call(d3.axisBottom(xScale));
+  yAxis.call(d3.axisLeft(yScale));
+   
+}
+
+
+
+
+d3.csv('twitter_data_new.csv', dataCallback);
+
+</script>
+</body>
