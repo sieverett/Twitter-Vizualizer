@@ -10,12 +10,10 @@
     </style>
 </head>
 <body>
-<svg id="fillgauge1" width="32%" height="250" onclick="gauge1.update(NewValue());"></svg>
+<svg id="fillgauge1" width="32%" height="200" onclick="gauge1.update(NewValue());"></svg>
 <svg id="fillgauge2" width="32%" height="200" onclick="gauge2.update(NewValue());"></svg>
 <svg id="fillgauge3" width="32%" height="200" onclick="gauge3.update(NewValue());"></svg>
-<svg id="fillgauge4" width="19%" height="200" onclick="gauge4.update(NewValue());"></svg>
-<svg id="fillgauge5" width="19%" height="200" onclick="gauge5.update(NewValue());"></svg>
-<svg id="fillgauge6" width="19%" height="200" onclick="gauge6.update(NewValue());"></svg>
+
 <script language="JavaScript">
 
 var campaignTarget_followers = 1000000
@@ -28,9 +26,9 @@ d3.csv("gauge_data.csv", function(data) {
         console.log(data[i].friends);
         console.log(data[i].retweet_count);
 
-    var gauge1 = loadLiquidFillGauge("fillgauge1", Math.round(data[0].followers/campaignTarget_followers, config4));
-    var gauge2= loadLiquidFillGauge("fillgauge2", Math.round(data[0].friends/campaignTarget_friends), config4);
-    var gauge3 = loadLiquidFillGauge("fillgauge3", Math.round(data[0].retweet_count/campaignTarget_retweet_count), config4);
+    var gauge1 = loadLiquidFillGauge("fillgauge1", Math.round(data[0].followers/campaignTarget_followers));
+    var gauge2= loadLiquidFillGauge("fillgauge2", Math.round(data[0].friends/campaignTarget_friends));
+    var gauge3 = loadLiquidFillGauge("fillgauge3", Math.round(data[0].retweet_count/campaignTarget_retweet_count));
     }
 });
 
@@ -64,15 +62,6 @@ d3.csv("gauge_data.csv", function(data) {
     config2.waveAnimateTime = 2000;
     config2.waveHeight = 0.3;
     config2.waveCount = 1;
-
-    var config3 = liquidFillGaugeDefaultSettings();
-    config3.textVertPosition = 0.8;
-    config3.waveAnimateTime = 5000;
-    config3.waveHeight = 0.15;
-    config3.waveAnimate = false;
-    config3.waveOffset = 0.25;
-    config3.valueCountUp = false;
-    config3.displayPercent = false;
 
     var config4 = liquidFillGaugeDefaultSettings();
     config4.circleThickness = 0.15;
