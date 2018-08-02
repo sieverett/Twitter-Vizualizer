@@ -1,0 +1,454 @@
+{
+  "links": [{
+      "source": "timesofindia",
+      "target": "Varun Vijay",
+      "value": 12
+    },
+    {
+      "source": "timesofindia",
+      "target": "Shweta Tiwary",
+      "value": 12
+    },
+    {
+      "source": "timesofindia",
+      "target": "Braja Bandhu Behera",
+      "value": 12
+    },
+    {
+      "source": "timesofindia",
+      "target": "Mohit $marty....",
+      "value": 12
+    },
+    {
+      "source": "ndtv",
+      "target": "Mohammed rafique jun",
+      "value": 12
+    },
+    {
+      "source": "ndtv",
+      "target": "India's Big Debate",
+      "value": 12
+    },
+    {
+      "source": "ndtv",
+      "target": "MOHAMMAD DANISH",
+      "value": 12
+    },
+    {
+      "source": "ndtv",
+      "target": "Anil Dikshit",
+      "value": 12
+    },
+    {
+      "source": "ndtv",
+      "target": "NIKHIL P BHAGWAT",
+      "value": 12
+    },
+    {
+      "source": "ndtv",
+      "target": "Bishnu Sahoo",
+      "value": 12
+    },
+    {
+      "source": "ndtv",
+      "target": "Mithu De",
+      "value": 12
+    },
+    {
+      "source": "TimesNow",
+      "target": "Mohit $marty....",
+      "value": 12
+    },
+    {
+      "source": "TimesNow",
+      "target": "Muhammad Iqbal",
+      "value": 12
+    },
+    {
+      "source": "aajtak",
+      "target": "Sohan Bhadoriya",
+      "value": 12
+    },
+    {
+      "source": "aajtak",
+      "target": "Ramprasad Lodha ABVP",
+      "value": 12
+    },
+    {
+      "source": "aajtak",
+      "target": "Himanshu Rana",
+      "value": 12
+    },
+    {
+      "source": "aajtak",
+      "target": "FIROJ ALI",
+      "value": 12
+    },
+    {
+      "source": "aajtak",
+      "target": "Mamta sishodia",
+      "value": 12
+    },
+    {
+      "source": "aajtak",
+      "target": "Shabi Abbas",
+      "value": 12
+    },
+    {
+      "source": "aajtak",
+      "target": "aamir",
+      "value": 12
+    },
+    {
+      "source": "aajtak",
+      "target": "arjun singh chauhan 🇮🇳",
+      "value": 12
+    },
+    {
+      "source": "htTweets",
+      "target": "MANISH KUMAR JHA",
+      "value": 12
+    },
+    {
+      "source": "htTweets",
+      "target": "Yugesh",
+      "value": 12
+    },
+    {
+      "source": "the_hindu",
+      "target": "Devender Yadav",
+      "value": 12
+    },
+    {
+      "source": "the_hindu",
+      "target": "Narinder Happa.(नरेन्द्र हप्पा)",
+      "value": 12
+    },
+    {
+      "source": "the_hindu",
+      "target": "Sentil Kumar",
+      "value": 12
+    },
+    {
+      "source": "the_hindu",
+      "target": "@Newsoholic",
+      "value": 12
+    },
+    {
+      "source": "IndiaToday",
+      "target": "Riz Sk",
+      "value": 12
+    },
+    {
+      "source": "IndiaToday",
+      "target": "rishabh jain",
+      "value": 12
+    },
+    {
+      "source": "IndiaToday",
+      "target": "madhukar kashyap",
+      "value": 12
+    },
+    {
+      "source": "IndiaToday",
+      "target": "Badal Singh",
+      "value": 12
+    },
+    {
+      "source": "IndiaToday",
+      "target": "🐝மின்மினி🐝",
+      "value": 12
+    },
+    {
+      "source": "IndiaToday",
+      "target": "Harshit Dwivedi",
+      "value": 12
+    },
+    {
+      "source": "IndiaToday",
+      "target": "Anil Kumar Katiyar",
+      "value": 12
+    },
+    {
+      "source": "IndiaToday",
+      "target": "yogesh shinde",
+      "value": 12
+    },
+    {
+      "source": "IndiaToday",
+      "target": "vidyut kaji",
+      "value": 12
+    },
+    {
+      "source": "IndiaToday",
+      "target": "Santosh",
+      "value": 12
+    },
+    {
+      "source": "IndiaToday",
+      "target": "Supriya Bhardwaj",
+      "value": 12
+    },
+    {
+      "source": "IndiaToday",
+      "target": "Khupmin Haokip",
+      "value": 12
+    },
+    {
+      "source": "IndiaToday",
+      "target": "Ashish Bhardwaj",
+      "value": 12
+    },
+    {
+      "source": "CNNnews18",
+      "target": "Hiren Parekh",
+      "value": 12
+    },
+    {
+      "source": "EconomicTimes",
+      "target": "Varun Vijay",
+      "value": 12
+    },
+    {
+      "source": "EconomicTimes",
+      "target": "Narinder Happa.(नरेन्द्र हप्पा)",
+      "value": 12
+    },
+    {
+      "source": "EconomicTimes",
+      "target": "Raghav Ohri",
+      "value": 12
+    },
+    {
+      "source": "EconomicTimes",
+      "target": "Sarthak Chakravarty",
+      "value": 12
+    },
+    {
+      "source": "EconomicTimes",
+      "target": "Selvakumar Pillai",
+      "value": 12
+    }
+  ],
+  "nodes": [{
+      "group": 1,
+      "id": "timesofindia"
+    },
+    {
+      "group": 1,
+      "id": "ndtv"
+    },
+    {
+      "group": 1,
+      "id": "TimesNow"
+    },
+    {
+      "group": 1,
+      "id": "aajtak"
+    },
+    {
+      "group": 1,
+      "id": "htTweets"
+    },
+    {
+      "group": 1,
+      "id": "the_hindu"
+    },
+    {
+      "group": 1,
+      "id": "IndiaToday"
+    },
+    {
+      "group": 1,
+      "id": "CNNnews18"
+    },
+    {
+      "group": 1,
+      "id": "EconomicTimes"
+    },
+    {
+      "group": 2,
+      "id": "Varun Vijay"
+    },
+    {
+      "group": 2,
+      "id": "Shweta Tiwary"
+    },
+    {
+      "group": 2,
+      "id": "Braja Bandhu Behera"
+    },
+    {
+      "group": 2,
+      "id": "Mohit $marty...."
+    },
+    {
+      "group": 2,
+      "id": "Mohammed rafique jun"
+    },
+    {
+      "group": 2,
+      "id": "India's Big Debate"
+    },
+    {
+      "group": 2,
+      "id": "MOHAMMAD DANISH"
+    },
+    {
+      "group": 2,
+      "id": "Anil Dikshit"
+    },
+    {
+      "group": 2,
+      "id": "NIKHIL P BHAGWAT"
+    },
+    {
+      "group": 2,
+      "id": "Bishnu Sahoo"
+    },
+    {
+      "group": 2,
+      "id": "Mithu De"
+    },
+    {
+      "group": 2,
+      "id": "Mohit $marty...."
+    },
+    {
+      "group": 2,
+      "id": "Muhammad Iqbal"
+    },
+    {
+      "group": 2,
+      "id": "Sohan Bhadoriya"
+    },
+    {
+      "group": 2,
+      "id": "Ramprasad Lodha ABVP"
+    },
+    {
+      "group": 2,
+      "id": "Himanshu Rana"
+    },
+    {
+      "group": 2,
+      "id": "FIROJ ALI"
+    },
+    {
+      "group": 2,
+      "id": "Mamta sishodia"
+    },
+    {
+      "group": 2,
+      "id": "Shabi Abbas"
+    },
+    {
+      "group": 2,
+      "id": "aamir"
+    },
+    {
+      "group": 2,
+      "id": "arjun singh chauhan 🇮🇳"
+    },
+    {
+      "group": 2,
+      "id": "MANISH KUMAR JHA"
+    },
+    {
+      "group": 2,
+      "id": "Yugesh"
+    },
+    {
+      "group": 2,
+      "id": "Devender Yadav"
+    },
+    {
+      "group": 2,
+      "id": "Narinder Happa.(नरेन्द्र हप्पा)"
+    },
+    {
+      "group": 2,
+      "id": "Sentil Kumar"
+    },
+    {
+      "group": 2,
+      "id": "@Newsoholic"
+    },
+    {
+      "group": 2,
+      "id": "Riz Sk"
+    },
+    {
+      "group": 2,
+      "id": "rishabh jain"
+    },
+    {
+      "group": 2,
+      "id": "madhukar kashyap"
+    },
+    {
+      "group": 2,
+      "id": "Badal Singh"
+    },
+    {
+      "group": 2,
+      "id": "🐝மின்மினி🐝"
+    },
+    {
+      "group": 2,
+      "id": "Harshit Dwivedi"
+    },
+    {
+      "group": 2,
+      "id": "Anil Kumar Katiyar"
+    },
+    {
+      "group": 2,
+      "id": "yogesh shinde"
+    },
+    {
+      "group": 2,
+      "id": "vidyut kaji"
+    },
+    {
+      "group": 2,
+      "id": "Santosh"
+    },
+    {
+      "group": 2,
+      "id": "Supriya Bhardwaj"
+    },
+    {
+      "group": 2,
+      "id": "Khupmin Haokip"
+    },
+    {
+      "group": 2,
+      "id": "Ashish Bhardwaj"
+    },
+    {
+      "group": 2,
+      "id": "Hiren Parekh"
+    },
+    {
+      "group": 2,
+      "id": "Varun Vijay"
+    },
+    {
+      "group": 2,
+      "id": "Narinder Happa.(नरेन्द्र हप्पा)"
+    },
+    {
+      "group": 2,
+      "id": "Raghav Ohri"
+    },
+    {
+      "group": 2,
+      "id": "Sarthak Chakravarty"
+    },
+    {
+      "group": 2,
+      "id": "Selvakumar Pillai"
+    }
+  ]
+}
