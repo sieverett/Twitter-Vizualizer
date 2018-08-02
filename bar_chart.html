@@ -4,7 +4,7 @@
 
 body { font: 12px Arial;}
 
-path { 
+path {
   stroke: steelblue;
 	stroke-width: 2;
 	fill: none;
@@ -25,7 +25,7 @@ path {
 W209 Final Project
 </p>
 <svg width="960" height="600"></svg>
-<!-- load the d3.js library -->	
+<!-- load the d3.js library -->
 <script src="http://d3js.org/d3.v4.min.js"></script>
 
 <script>
@@ -41,28 +41,28 @@ var g = svg.append("g")
 var yScale = d3.scaleLinear()
   .rangeRound([ height, 0]);
 
-var xScale = d3.scaleBand()  
+var xScale = d3.scaleBand()
   .padding(0.2)
   .rangeRound([0, width]);
-    
-function GetTop(arrayData){  
+
+function GetTop(arrayData){
   arrayData.sort(function(a, b) {
                    return parseFloat(b.followers) - parseFloat(a.followers);
                  });
-  return arrayData.slice(0, 50); 
+  return arrayData.slice(0, 50);
 }
 
-d3.csv('twitter_data_new.csv', function(d) {
+d3.csv('general_data_twitter.csv', function(d) {
   d.followers = +d.followers;
   d.user = d.screen_name;
   return d;
   }, function (err, data) {
   if (err) throw err;
 
-  data = GetTop(data); 
+  data = GetTop(data);
   xScale.domain(data.map(function(d) { return d.user; }));
   yScale.domain([0, d3.max(data, function(d) { return d.followers; })]);
-  
+
   g.append("g")
     .attr("class", "x--axis")
     .attr("transform", "translate(0," + height + ")")
@@ -74,25 +74,25 @@ d3.csv('twitter_data_new.csv', function(d) {
     .attr("transform", "rotate(-45)")
     .style("text-anchor", "end");
 
-  svg.append("text")             
+  svg.append("text")
       .attr("transform",
-            "translate(" + (width/2 + 50) + " ," + 
+            "translate(" + (width/2 + 50) + " ," +
                            (height + margin.bottom + 20) + ")")
       .style("text-anchor", "middle")
       .text("Twitter Handle");
-    
+
   g.append("g")
     .attr("class", "y--axis")
-    .call(d3.axisLeft(yScale))    
-  
+    .call(d3.axisLeft(yScale))
+
   svg.append("text")
       .attr("transform", "rotate(-90)")
       .attr("y", 0)
       .attr("x",0 - (height / 2))
       .attr("dy", "1em")
       .style("text-anchor", "middle")
-      .text("# of Followers"); 
-    
+      .text("# of Followers");
+
   g.selectAll(".bar")
     .data(data)
     .enter()
