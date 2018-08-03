@@ -6,7 +6,7 @@
     <title>W209 Project</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script src="{{ url_for('static', filename='assets/js/liquidFillGauge.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/d3-liquidFillGauge.js') }}"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}">
   </head>
 
@@ -76,12 +76,11 @@
           <h3 class="multi-header-3">3rd Target</h3>
         </div> <!-- ends panel-header div -->
         <div class="panel">
-          <svg id="fillgauge1" width="32%" height="200"></svg>
-          <svg id="fillgauge2" width="32%" height="200"></svg>
-          <svg id="fillgauge3" width="32%" height="200"></svg>
+          <svg id="fillgauge4" width="32%" height="200"></svg>
+          <svg id="fillgauge1" width="32%" height="200" </svg>
+          <svg id="fillgauge2" width="32%" height="200" onclick="data.gauge2.update(NewValue());"></svg>
         </div>
       </div> <!-- ends vis-holder -->
-
 
       <div class="vis-holder">
         <div class="panel-header">
@@ -106,7 +105,6 @@
           <svg width="640" height="480"></svg>
         </div>
       </div> <!-- ends vis-holder -->
-
     </main>
 
     <script src="https://cdn.rawgit.com/john-guerra/netClusteringJs/master/netClustering.js"></script>
