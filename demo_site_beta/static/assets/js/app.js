@@ -316,12 +316,12 @@ function showGauge() {
 
       var foll_target = 90000000;
       var frnd_target = 500000;
-      var retwt_target = 100000
+      var retwt_target = 150000
       var foll_i = 0;
       var frnd_i = 0;
       var retwt_i = 0;
 
-      var gauge4 = loadLiquidFillGauge("fillgauge4", ((data[0].followers/foll_target)* 100), config3);
+      var gauge4 = loadLiquidFillGauge("fillgauge4", Math.round(((data[0].followers/foll_target)* 100)), config3);
                        function NewValue() {
                            if (Math.random() > .5) {
                                return Math.round(Math.random() * 100);
@@ -329,7 +329,7 @@ function showGauge() {
                                return (Math.random() * 100).toFixed(1);
                            }
                        }
-      var gauge1 = loadLiquidFillGauge("fillgauge1", ((data[0].friends/frnd_target) * 100), config3);
+      var gauge1 = loadLiquidFillGauge("fillgauge1", Math.round(((data[0].friends/frnd_target) * 100)), config3);
                        function NewValue() {
                            if (Math.random() > .5) {
                                return Math.round(Math.random() * 100);
@@ -338,7 +338,7 @@ function showGauge() {
                            }
                        }
 
-      var gauge2 = loadLiquidFillGauge("fillgauge2", ((data[0].retweet_count/retwt_target) * 100), config3);
+      var gauge2 = loadLiquidFillGauge("fillgauge2", Math.round(((data[0].retweet_count/retwt_target) * 100)), config3);
                        function NewValue() {
                            if (Math.random() > .5) {
                                return Math.round(Math.random() * 100);
