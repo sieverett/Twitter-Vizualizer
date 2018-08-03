@@ -6,8 +6,8 @@
     <title>W209 Project</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script src="{{ url_for('static', filename='assets/js/d3-liquidFillGauge.js') }}"></script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}">
+    <script src="./static/assets/js/d3-liquidFillGauge.js"></script>
+    <link rel="stylesheet" href="./static/assets/css/main.css">
   </head>
 
   <body>
@@ -73,10 +73,9 @@
 
       <div class="vis-holder">
         <div class="panel-header">
-          <h3 class="multi-header-3">Followers |</h3>
-          <p>target</p>
-          <h3 class="multi-header-3">Friends</h3>
-          <h3 class="multi-header-3">Retweets</h3>
+          <h3 class="multi-header-3">Followers (Daily)</h3>
+          <h3 class="multi-header-3">Friends (Daily)</h3>
+          <h3 class="multi-header-3">Retweets (Daily)</h3>
         </div> <!-- ends panel-header div -->
         <div class="panel">
           <svg id="fillgauge4" width="29%" height="200"></svg>
@@ -113,7 +112,7 @@
     </main>
 
     <script src="https://cdn.rawgit.com/john-guerra/netClusteringJs/master/netClustering.js"></script>
-    <script src="{{url_for('static', filename='assets/js/app.js')}}"></script>
+    <script src="./static/assets/js/app.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXMZcPmbx-qyDdEPt9_iKBqijxAnzum58&callback=initMap" async defer></script>
   </body>
 </html>
