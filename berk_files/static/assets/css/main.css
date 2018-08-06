@@ -170,6 +170,33 @@ h2.leader {
   font-family: Helvetica; font-weight: bold;
 }
 
+.chart-gauge
+{
+ width: 400px;
+ margin: 100px auto
+}
+.chart-filled
+{
+   fill: steelblue;
+}
+.chart-empty
+{
+   fill: #DFDFDF;
+}
+
+.chart-target
+{
+   fill: #ff0000;
+}
+
+.needle, .needle-center
+{
+   fill: #fff;
+}
+
+svg {
+    font: 10px sans-serif;
+    }
 /* the line chart */
 
 .area {

@@ -296,14 +296,193 @@ function lineGraph() {
   }
 
   function type(d) {
-    console.log(d.date);
     d.date = parseDate(d.date);
     d.count = +d.count;
-    
-    console.log(d.date);
     return d;
   }
 }
+
+
+function chart_gauge() {
+     var barWidth, chart, chartInset, degToRad, repaintGauge,
+         height, margin, numSections, padRad, percToDeg, percToRad,
+         percent, radius, sectionIndx, svg, totalPercent, width,
+             targetText, actualText, formatValue, k;
+
+     percent = .632;
+     numSections = 1;
+     sectionPerc = 1 / numSections / 2;
+     padRad = 0.025;
+     chartInset = 10;
+     targetValue = 3000000
+     totalPercent = 0.75;
+
+     el = d3.select('#chart-gauge');
+
+     margin = {
+         top: 0,
+         right: 0,
+         bottom: 0,
+         left: 0
+     };
+
+     width = +el.attr("width") - margin.left - margin.right;
+     height = width;
+     radius = Math.min(width, height) / 3;
+     barWidth = 40 * width / 300;
+
+     /*
+       Utility methods
+     */
+     percToDeg = function (perc) {
+         return perc * 360;
+     };
+
+     percToRad = function (perc) {
+         return degToRad(percToDeg(perc));
+     };
+
+     degToRad = function (deg) {
+         return deg * Math.PI / 180;
+     };
+
+     // Create SVG element
+     svg = el.append('svg').attr('width', width + margin.left + margin.right).attr('height', height + margin.top + margin.bottom);
+     console.log(svg)
+     // Add layer for the panel
+     chart = svg.append('g').attr('transform', "translate(" + ((width + margin.left) / 2) + ", " + ((height + margin.top) / 2) + ")");
+     chart.append('path').attr('class', "arc chart-filled");
+     chart.append('path').attr('class', "arc chart-empty");
+     chart.append('path').attr('class', "arc chart-target");
+
+     targetText = chart.append("text")
+                    .attr('id', "Value")
+                    .attr("font-size", 16)
+                    .attr("text-anchor", "middle")
+                    .attr("dy", ".5em")
+                    .style("fill", '#0000FF');
+
+     var thetaRad = percToRad(targetValue / 2);
+     var textX = -(self.len + 5) * Math.cos(thetaRad);
+     var textY = -(self.len + 5) * Math.sin(thetaRad);
+
+     actualText = chart.append('text')
+                    .attr('id', "Value")
+                    .attr("font-size", 16)
+                    .attr("text-anchor", "middle")
+                    .attr("dy", -13)
+                    .style("fill", '#0000FF')
+                    .attr('class', 'needle').attr('cx', 0).attr('cy', 0).attr('r', this.radius);
+
+     arc3 = d3.arc().outerRadius(radius - chartInset).innerRadius(radius - chartInset - barWidth)
+     arc2 = d3.arc().outerRadius(radius - chartInset).innerRadius(radius - chartInset - barWidth)
+     arc1 = d3.arc().outerRadius(radius - chartInset).innerRadius(radius - chartInset - barWidth)
+
+     repaintGauge = function (actualPerc, targetPerc) {
+
+         var next_start = totalPercent;
+         arcStartRad = percToRad(next_start);
+         arcEndRad = arcStartRad + percToRad(actualPerc / 2);
+         next_start += actualPerc / 2;
+
+         arc1.startAngle(arcStartRad).endAngle(arcEndRad);
+
+         var next_start1 = totalPercent;
+         arcStartRad = percToRad(next_start1);
+         arcEndRad = arcStartRad + percToRad(targetPerc / 2);
+         next_start1 += targetPerc / 2;
+
+         arc3.startAngle(arcEndRad - padRad).endAngle(arcEndRad);
+
+         arcStartRad = percToRad(next_start);
+         arcEndRad = arcStartRad + percToRad((1 - actualPerc) / 2);
+
+         arc2.startAngle(arcStartRad).endAngle(arcEndRad);
+         var fillColor = "#CD6660";
+         if (actualPerc >= targetPerc) {
+             fillColor = "#94BFF5";
+         }
+
+         chart.select(".chart-filled").style("fill", fillColor).attr('d', arc1);
+         chart.select(".chart-empty").attr('d', arc2);
+         chart.select(".chart-target").attr('d', arc3);
+
+     }
+var Needle = function () {
+
+         var recalcPointerPos = function (perc) {
+             var centerX, centerY, leftX, leftY, rightX, rightY, thetaRad, topX, topY;
+             thetaRad = percToRad(perc / 2);
+             centerX = 0;
+             centerY = 0;
+             topX = centerX - this.len * Math.cos(thetaRad);
+             topY = centerY - this.len * Math.sin(thetaRad);
+             leftX = centerX - this.radius * Math.cos(thetaRad - Math.PI / 2);
+             leftY = centerY - this.radius * Math.sin(thetaRad - Math.PI / 2);
+             rightX = centerX - this.radius * Math.cos(thetaRad + Math.PI / 2);
+             rightY = centerY - this.radius * Math.sin(thetaRad + Math.PI / 2);
+             return "M " + leftX + " " + leftY + " L " + topX + " " + topY + " L " + rightX + " " + rightY;
+         };
+
+         function Needle(el) {
+             this.el = el;
+             this.len = width / 3;
+             this.radius = this.len / 6;
+         }
+
+         Needle.render = function () {
+             return this.el;
+         };
+
+         Needle.moveTo = function (perc, perc2) {
+             var self,
+                 oldValue = this.perc || 0;
+
+             this.perc = perc;
+             self = this;
+
+             // Reset pointer position
+             d3.transition().delay(100).ease('quad').duration(200).select('.needle').tween('reset-progress', function () {
+                 return function (percentOfPercent) {
+                     var progress = (1 - percentOfPercent) * oldValue;
+
+                     repaintGauge(progress, perc2);
+                     return d3.select(this).attr('d', recalcPointerPos.call(self, progress));
+                 };
+             });
+
+             d3.transition().delay(300).ease('bounce').duration(1500).select('.needle').tween('progress', function () {
+                 return function (percentOfPercent) {
+                     var progress = percentOfPercent * perc;
+
+                     repaintGauge(progress, perc2);
+
+                     var thetaRad = percToRad(perc2 / 2);
+                     var textX = -(self.len + 5) * Math.cos(thetaRad);
+                     var textY = -(self.len + 5) * Math.sin(thetaRad);
+
+                     actualText.text(targetValue)
+
+
+                     targetText.text(1896140)
+                               .attr('transform', "translate(" + textX + "," + textY + ")")
+
+                     return d3.select(this).attr('d', recalcPointerPos.call(self, progress));
+                 };
+             });
+
+         };
+
+         return Needle;
+
+     };
+
+     needle = new Needle(chart);
+     needle.render();
+
+     needle.moveTo(percent, percent);
+
+ };
 
 function showGauge() {
   var config3 = liquidFillGaugeDefaultSettings();
@@ -356,3 +535,4 @@ function showGauge() {
 forceGraph();
 lineGraph();
 showGauge();
+chart_gauge();
