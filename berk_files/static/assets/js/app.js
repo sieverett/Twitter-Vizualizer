@@ -199,7 +199,7 @@ function lineGraph() {
     })
     .y0(height)
     .y1(function (d) {
-      return y(d.price);
+      return y(d.count);
     });
 
   var area2 = d3.area()
@@ -209,7 +209,7 @@ function lineGraph() {
     })
     .y0(height2)
     .y1(function (d) {
-      return y2(d.price);
+      return y2(d.count);
     });
 
   svg.append("defs").append("clipPath")
@@ -233,7 +233,7 @@ function lineGraph() {
       return d.date;
     }));
     y.domain([0, d3.max(data, function (d) {
-      return d.price;
+      return d.count;
     })]);
     x2.domain(x.domain());
     y2.domain(y.domain());
@@ -296,8 +296,11 @@ function lineGraph() {
   }
 
   function type(d) {
+    console.log(d.date);
     d.date = parseDate(d.date);
-    d.price = +d.price;
+    d.count = +d.count;
+    
+    console.log(d.date);
     return d;
   }
 }
