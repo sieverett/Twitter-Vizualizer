@@ -320,15 +320,15 @@ function chart_gauge() {
      el = d3.select('#chart-gauge');
 
      margin = {
-         top: 0,
-         right: 0,
-         bottom: 0,
-         left: 0
+         top: 50,
+         right: 40,
+         bottom: 20,
+         left: 40
      };
 
-     width = +el.attr("width") - margin.left - margin.right;
-     height = width;
-     radius = Math.min(width, height) / 3;
+     width = +el.attr("width") - margin.left - margin.right,
+     height = +el.attr("height") - margin.top - margin.bottom,
+     radius = Math.min(width, height);
      barWidth = 40 * width / 300;
 
      /*
@@ -347,10 +347,9 @@ function chart_gauge() {
      };
 
      // Create SVG element
-     svg = el.append('svg').attr('width', width + margin.left + margin.right).attr('height', height + margin.top + margin.bottom);
-     console.log(svg)
+     svg = el.append('svg').attr('width', width).attr('height', (height + margin.top + margin.bottom));
      // Add layer for the panel
-     chart = svg.append('g').attr('transform', "translate(" + ((width + margin.left) / 2) + ", " + ((height + margin.top) / 2) + ")");
+     chart = svg.append('g').attr('transform', "translate(" + (width/2) + ", " + (height) + ")");
      chart.append('path').attr('class', "arc chart-filled");
      chart.append('path').attr('class', "arc chart-empty");
      chart.append('path').attr('class', "arc chart-target");
@@ -372,7 +371,7 @@ function chart_gauge() {
                     .attr("text-anchor", "middle")
                     .attr("dy", -13)
                     .style("fill", '#0000FF')
-                    .attr('class', 'needle').attr('cx', 0).attr('cy', 0).attr('r', this.radius);
+                    .attr('class', 'needle').attr('cx', 0).attr('cy', 0).attr('r', self.radius);
 
      arc3 = d3.arc().outerRadius(radius - chartInset).innerRadius(radius - chartInset - barWidth)
      arc2 = d3.arc().outerRadius(radius - chartInset).innerRadius(radius - chartInset - barWidth)
@@ -442,16 +441,16 @@ var Needle = function () {
              self = this;
 
              // Reset pointer position
-             d3.transition().delay(100).ease('quad').duration(200).select('.needle').tween('reset-progress', function () {
+             d3.transition().delay(100).ease(d3.easeQuad).duration(200).select('.needle').tween('reset-progress', function () {
                  return function (percentOfPercent) {
                      var progress = (1 - percentOfPercent) * oldValue;
 
                      repaintGauge(progress, perc2);
-                     return d3.select(this).attr('d', recalcPointerPos.call(self, progress));
+                     return d3.select(self).attr('d', recalcPointerPos.call(self, progress));
                  };
              });
 
-             d3.transition().delay(300).ease('bounce').duration(1500).select('.needle').tween('progress', function () {
+             d3.transition().delay(300).ease(d3.easeBounce).duration(1500).select('.needle').tween('progress', function () {
                  return function (percentOfPercent) {
                      var progress = percentOfPercent * perc;
 
@@ -461,13 +460,13 @@ var Needle = function () {
                      var textX = -(self.len + 5) * Math.cos(thetaRad);
                      var textY = -(self.len + 5) * Math.sin(thetaRad);
 
-                     actualText.text(targetValue)
-
-
-                     targetText.text(1896140)
+                     console.log(textX, textY)
+                     targetText.text('Current: 1,896,140')
                                .attr('transform', "translate(" + textX + "," + textY + ")")
 
-                     return d3.select(this).attr('d', recalcPointerPos.call(self, progress));
+                     actualText.text('Goal: 3,000,000')          
+
+                     return d3.select(self).attr('d', recalcPointerPos.call(self, progress));
                  };
              });
 
