@@ -223,13 +223,6 @@ function lineGraph() {
     .attr("width", width)
     .attr("height", height);
 
-  svg.append("text")
-     .attr("x", 5)
-     .attr("y", height/3)
-     .attr("transform", "rotate(270)")
-     .text("# of tweets")
-
-
   var focus = svg.append("g")
     .attr("class", "focus")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -278,6 +271,17 @@ function lineGraph() {
       .attr("class", "brush")
       .call(brush)
       .call(brush.move, x.range());
+    
+
+    svg.append("text")
+        .attr("font-size", 18)
+        .attr("text-anchor", "middle")
+        .attr("x", -170)
+        .attr("y", 15)
+        .style("fill", '#000000')
+        .attr("transform", "rotate(270)")
+        .text("# of tweets")
+    
 
     svg.append("rect")
       .attr("class", "zoom")
