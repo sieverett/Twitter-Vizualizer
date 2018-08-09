@@ -6,9 +6,6 @@ function forceGraph() {
 
   var color = d3.scaleOrdinal(d3.schemeCategory20);
 
-
-
-
   var simulation = d3.forceSimulation()
     .force("link", d3.forceLink().id(function (d) {
       return d.id;
@@ -16,7 +13,7 @@ function forceGraph() {
     .force("charge", d3.forceManyBody().strength(-15))
     .force("center", d3.forceCenter(width / 2, height / 2));
 
-  d3.json("./static/assets/js/data_twitter.json", function (error, graph) {
+  d3.json("./static/assets/js/network_data_twitter.json", function (error, graph) {
     if (error) throw error;
 
     var link = svg.append("g")
@@ -33,8 +30,8 @@ function forceGraph() {
       .selectAll("circle")
       .data(graph.nodes)
       .enter().append("circle")
-      .attr('r', function(d){
-  return (4/d.group)*4
+      .attr('r',  function(d){
+  return d.value;
 })
       .attr("fill", function (d) {
         return color(d.group);
@@ -44,13 +41,14 @@ function forceGraph() {
         .on("drag", dragged)
         .on("end", dragended));
 
+
     node.append("title")
-      .text(function (d) {
-        return d.id;
-      })
-;
-
-
+      .text(function (d) {return d.id+" has "+d.followers+" followers";});
+/*
+    node.append("text")
+                  .attr("dy", -3)
+                  .text(function (d) {return d.id});
+*/
     simulation
       .nodes(graph.nodes)
       .on("tick", ticked);
@@ -186,55 +184,6 @@ function lineGraph() {
       [width, height2]
     ])
     .on("brush end", brushed);
-
-    g.append("g")
-        .attr("class", "axis axis--x")
-        .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x));
-
-    var circle = g.append("g")
-        .attr("class", "circle")
-      .selectAll("circle")
-      .data(data)
-      .enter().append("circle")
-        .attr("transform", function(d) { return "translate(" + x(d) + "," + y() + ")"; })
-        .attr("r", 3.5);
-
-    var gBrush = g.append("g")
-        .attr("class", "brush")
-        .call(brush);
-
-    // style brush resize handle
-    // https://github.com/crossfilter/crossfilter/blob/gh-pages/index.html#L466
-    var brushResizePath = function(d) {
-        var e = +(d.type == "e"),
-            x = e ? 1 : -1,
-            y = height / 2;
-        return "M" + (.5 * x) + "," + y + "A6,6 0 0 " + e + " " + (6.5 * x) + "," + (y + 6) + "V" + (2 * y - 6) + "A6,6 0 0 " + e + " " + (.5 * x) + "," + (2 * y) + "Z" + "M" + (2.5 * x) + "," + (y + 8) + "V" + (2 * y - 8) + "M" + (4.5 * x) + "," + (y + 8) + "V" + (2 * y - 8);
-    }
-
-    var handle = gBrush.selectAll(".handle--custom")
-      .data([{type: "w"}, {type: "e"}])
-      .enter().append("path")
-        .attr("class", "handle--custom")
-        .attr("stroke", "#000")
-        .attr("cursor", "ew-resize")
-        .attr("d", brushResizePath);
-
-    gBrush.call(brush.move, [0.3, 0.5].map(x));
-
-    function brushmoved() {
-      var s = d3.event.selection;
-      if (s == null) {
-        handle.attr("display", "none");
-        circle.classed("active", false);
-      } else {
-        var sx = s.map(x.invert);
-        circle.classed("active", function(d) { return sx[0] <= d && d <= sx[1]; });
-        handle.attr("display", null).attr("transform", function(d, i) { return "translate(" + [ s[i], - height / 4] + ")"; });
-      }
-    }
-
 
   var zoom = d3.zoom()
     .scaleExtent([1, Infinity])
