@@ -6,11 +6,14 @@ function forceGraph() {
 
   var color = d3.scaleOrdinal(d3.schemeCategory20);
 
+
+
+
   var simulation = d3.forceSimulation()
     .force("link", d3.forceLink().id(function (d) {
       return d.id;
-    }))
-    .force("charge", d3.forceManyBody().strength(-5))
+    }).strength(0.1))
+    .force("charge", d3.forceManyBody().strength(-15))
     .force("center", d3.forceCenter(width / 2, height / 2));
 
   d3.json("./static/assets/js/data_twitter.json", function (error, graph) {
@@ -22,7 +25,7 @@ function forceGraph() {
       .data(graph.links)
       .enter().append("line")
       .attr("stroke-width", function (d) {
-        return Math.sqrt(d.value);
+        return Math.sqrt(d.value)*2;
       });
 
     var node = svg.append("g")
@@ -30,7 +33,9 @@ function forceGraph() {
       .selectAll("circle")
       .data(graph.nodes)
       .enter().append("circle")
-      .attr("r", 5)
+      .attr('r', function(d){
+  return (4/d.group)*4
+})
       .attr("fill", function (d) {
         return color(d.group);
       })
@@ -42,7 +47,9 @@ function forceGraph() {
     node.append("title")
       .text(function (d) {
         return d.id;
-      });
+      })
+;
+
 
     simulation
       .nodes(graph.nodes)
@@ -356,7 +363,7 @@ function chart_gauge() {
 
      targetText = chart.append("text")
                     .attr('id', "Value")
-                    .attr("font-size", 16)
+                    .attr("font-size", 30)
                     .attr("text-anchor", "middle")
                     .attr("dy", ".5em")
                     .style("fill", '#0000FF');
@@ -367,9 +374,9 @@ function chart_gauge() {
 
      actualText = chart.append('text')
                     .attr('id', "Value")
-                    .attr("font-size", 16)
+                    .attr("font-size", 30)
                     .attr("text-anchor", "middle")
-                    .attr("dy", -13)
+                    .attr("dy", -10)
                     .style("fill", '#0000FF')
                     .attr('class', 'needle').attr('cx', 0).attr('cy', 0).attr('r', self.radius);
 
@@ -440,7 +447,10 @@ var Needle = function () {
              this.perc = perc;
              self = this;
 
+
+
              // Reset pointer position
+
              d3.transition().delay(100).ease(d3.easeQuad).duration(200).select('.needle').tween('reset-progress', function () {
                  return function (percentOfPercent) {
                      var progress = (1 - percentOfPercent) * oldValue;
@@ -464,7 +474,7 @@ var Needle = function () {
                      targetText.text('Current: 1,896,140')
                                .attr('transform', "translate(" + textX + "," + textY + ")")
 
-                     actualText.text('Goal: 3,000,000')          
+                     actualText.text('Goal: 3,000,000')
 
                      return d3.select(self).attr('d', recalcPointerPos.call(self, progress));
                  };
