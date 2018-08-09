@@ -223,6 +223,13 @@ function lineGraph() {
     .attr("width", width)
     .attr("height", height);
 
+  svg.append("text")
+     .attr("x", 5)
+     .attr("y", height/3)
+     .attr("transform", "rotate(270)")
+     .text("# of tweets")
+
+
   var focus = svg.append("g")
     .attr("class", "focus")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -374,11 +381,11 @@ function chart_gauge() {
         .attr("x", width/2+ 100)
         .attr("y", margin.top + 90)
         .style("fill", '#CD6660')
-        .text("63%")
+        .text("63%")   
 
      targetText = chart.append("text")
                     .attr('id', "Value")
-                    .attr("font-size", 30)
+                    .attr("font-size", 16)
                     .attr("text-anchor", "middle")
                     .attr("dy", ".5em")
                     .style("fill", '#0000FF');
@@ -389,9 +396,9 @@ function chart_gauge() {
 
      actualText = chart.append('text')
                     .attr('id', "Value")
-                    .attr("font-size", 30)
+                    .attr("font-size", 16)
                     .attr("text-anchor", "middle")
-                    .attr("dy", -10)
+                    .attr("dy", -13)
                     .style("fill", '#0000FF')
                     .attr('class', 'needle').attr('cx', 100).attr('cy', 100).attr('r', self.radius);
 
@@ -462,20 +469,19 @@ var Needle = function () {
              this.perc = perc;
              self = this;
 
-
-
              // Reset pointer position
-
              d3.transition().delay(100).ease(d3.easeQuad).duration(200).select('.needle').tween('reset-progress', function () {
+                 var needle = d3.select(this);
                  return function (percentOfPercent) {
                      var progress = (1 - percentOfPercent) * oldValue;
 
                      repaintGauge(progress, perc2);
-                     return d3.select(self).attr('d', recalcPointerPos.call(self, progress));
+                     return needle.attr('d', recalcPointerPos.call(self, progress));
                  };
              });
 
              d3.transition().delay(300).ease(d3.easeBounce).duration(1500).select('.needle').tween('progress', function () {
+                 var needle = d3.select(this);
                  return function (percentOfPercent) {
                      var progress = percentOfPercent * perc;
 
@@ -485,13 +491,12 @@ var Needle = function () {
                      var textX = -(this.len + 5) * Math.cos(thetaRad);
                      var textY = -(this.len + 5) * Math.sin(thetaRad);
 
-                     console.log(textX, textY)
                      targetText.text('Goal: 3,000,000')
-                               .attr('transform', "translate(" + textX + "," + textY + ")")
+                               /*.attr('transform', "translate(" + textX + "," + textY + ")")*/
 
-                     actualText.text('Current: 1,896,140')
+                     actualText.text('Current: 1,896,140')          
 
-                     return d3.select(self).attr('d', recalcPointerPos.call(self, progress));
+                     return needle.attr('d', recalcPointerPos.call(self, progress));
                  };
              });
 
@@ -508,55 +513,67 @@ var Needle = function () {
 
  };
 
-function showGauge() {
-  var config3 = liquidFillGaugeDefaultSettings();
-      config3.textVertPosition = 0.5;
-      config3.waveAnimateTime = 1000;
-      config3.valueCountUp = true;
-      config3.displayPercent = true;
-      config3.waveCount = 1;
-
-  d3.csv("./static/assets/js/gauge_data.csv", function(error, data) {
+function showMetrics() {
+  
+  d3.csv("./static/assets/js/metrics.csv", function(error, data) {
     if (error) throw error;
     console.log(data[0]);
+  
+    var svg1 = d3.select("#metric1");
+    var svg2 = d3.select("#metric2");
+    var svg3 = d3.select("#metric3");
 
-      var foll_target = 90000000;
-      var frnd_target = 500000;
-      var retwt_target = 150000
-      var foll_i = 0;
-      var frnd_i = 0;
-      var retwt_i = 0;
+    svg1.append("text")
+        .attr("font-size", 24)
+        .attr("text-anchor", "middle")
+        .attr("x", 100)
+        .attr("y", 50)
+        .style("fill", '#CD6660')
+        .text("Unique Users")
+    
+    svg1.append("text")
+        .attr("font-size", 20)
+        .attr("text-anchor", "middle")
+        .attr("x", 100)
+        .attr("y", 90)
+        .style("fill", '#1096d9')
+        .text("9791")
 
-      var gauge4 = loadLiquidFillGauge("fillgauge4", Math.round(((data[0].followers/foll_target)* 100)), config3);
-                       function NewValue() {
-                           if (Math.random() > .5) {
-                               return Math.round(Math.random() * 100);
-                           } else {
-                               return (Math.random() * 100).toFixed(1);
-                           }
-                       }
-      var gauge1 = loadLiquidFillGauge("fillgauge1", Math.round(((data[0].friends/frnd_target) * 100)), config3);
-                       function NewValue() {
-                           if (Math.random() > .5) {
-                               return Math.round(Math.random() * 100);
-                           } else {
-                               return (Math.random() * 100).toFixed(1);
-                           }
-                       }
-
-      var gauge2 = loadLiquidFillGauge("fillgauge2", Math.round(((data[0].retweet_count/retwt_target) * 100)), config3);
-                       function NewValue() {
-                           if (Math.random() > .5) {
-                               return Math.round(Math.random() * 100);
-                           } else {
-                               return (Math.random() * 100).toFixed(1);
-                           }
-                       }
-
+    svg2.append("text")
+        .attr("font-size", 24)
+        .attr("text-anchor", "middle")
+        .attr("x", 100)
+        .attr("y", 50)
+        .style("fill", '#CD6660')
+        .text("Unique Tweets")
+        
+    svg2.append("text")
+        .attr("font-size", 20)
+        .attr("text-anchor", "middle")
+        .attr("x", 100)
+        .attr("y", 90)
+        .style("fill", '#1096d9')
+        .text("1523")
+        
+    svg3.append("text")
+        .attr("font-size", 24)
+        .attr("text-anchor", "middle")
+        .attr("x", 100)
+        .attr("y", 50)
+        .style("fill", '#CD6660')
+        .text("Total Followers")
+        
+    svg3.append("text")
+        .attr("font-size", 20)
+        .attr("text-anchor", "middle")
+        .attr("x", 100)
+        .attr("y", 90)
+        .style("fill", '#1096d9')
+        .text("53,577,917")                
   });
 }
 
 forceGraph();
 lineGraph();
-showGauge();
+showMetrics();
 chart_gauge();

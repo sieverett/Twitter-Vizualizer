@@ -23,10 +23,10 @@
     <div class="description">
     	<br><br>
     	<p style ="font-size:160%;">
-    		This dashboard was built for Change.org to enable its users to conduct social media analytics on petition campaigns for fighting violence against women in India.
-        The data represented here comes from a live petition, cast as "Justice for Kathua Rape Victim: 8yr old girl raped and murdered in Kathua, J&K".
-        The petition can be found <a href="https://www.change.org/p/justice-for-kathua-rape-victim-8yr-old-girl-raped-and-murdered-in-kathua-j-k">here.</a>
-    		Each visualization has a yellow circle with a red question mark in the upper right corner to explain that visualization and how to use it.
+    		This dashboard was built for Change.org to conduct social media analytics on petition campaigns for fighting violence against women in India.
+        The data represented here comes from a live petition, cast as "Justice for Kathua Rape Victim: 8yr old girl raped and murdered in Kathua, J&K".<br>
+        The petition can be found <a href="https://www.change.org/p/justice-for-kathua-rape-victim-8yr-old-girl-raped-and-murdered-in-kathua-j-k">here.</a><br><br>
+    		Hover over the red question mark in the upper right-hand corner of each visualization to read an explanation and learn how to use it.
     	</p>
 
     </div>
@@ -52,11 +52,17 @@
             <br><br>
             The first gauge measures the count of petition signatures on change.org.
             <br><br>
-            The next three liquid gauges show the percent completion of the goal towards total daily followers, friends and retweets.
+            The next three metrics show the overall engagement, unique twitter users, unique tweets, and number of followers that have seen the tweets.
           </span>
         </div>
         <div class="panel">
-          <svg id="chart-gauge" width="960" height="480"></svg>
+          <svg id="chart-gauge" width="960" height="300"></svg>
+        </div>
+        <div class="panel">
+          <h4>Engagement Metrics</h3>
+          <svg id="metric1" width="33%" height="200"></svg>
+          <svg id="metric2" width="33%" height="200"></svg>
+          <svg id="metric3" width="33%" height="200"></svg>
         </div>
 
       </div> <!-- ends vis-holder -->
