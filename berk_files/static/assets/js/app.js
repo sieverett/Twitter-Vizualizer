@@ -347,12 +347,29 @@ function chart_gauge() {
      };
 
      // Create SVG element
-     svg = el.append('svg').attr('width', width).attr('height', (height + margin.top + margin.bottom));
+     svg = el.append('svg').attr('width', width).attr('height', (height+margin.top+margin.bottom));
      // Add layer for the panel
-     chart = svg.append('g').attr('transform', "translate(" + (width/2) + ", " + (height) + ")");
+     chart = svg.append('g').attr('transform', "translate(" + (width/2) + ", " + (height+20) + ")");
      chart.append('path').attr('class', "arc chart-filled");
      chart.append('path').attr('class', "arc chart-empty");
      chart.append('path').attr('class', "arc chart-target");
+
+     svg.append("text")
+        .attr("font-size", 18)
+        .attr("text-anchor", "middle")
+        .attr("x", width/2)
+        .attr("y", margin.top/2)
+        .style("fill", '#0000FF')
+        .text('Total Signatures')
+
+
+     svg.append("text")
+        .attr("font-size", 24)
+        .attr("text-anchor", "middle")
+        .attr("x", width/2+ 100)
+        .attr("y", margin.top + 90)
+        .style("fill", '#CD6660')
+        .text("63%")   
 
      targetText = chart.append("text")
                     .attr('id', "Value")
@@ -371,7 +388,7 @@ function chart_gauge() {
                     .attr("text-anchor", "middle")
                     .attr("dy", -13)
                     .style("fill", '#0000FF')
-                    .attr('class', 'needle').attr('cx', 0).attr('cy', 0).attr('r', self.radius);
+                    .attr('class', 'needle').attr('cx', 100).attr('cy', 100).attr('r', self.radius);
 
      arc3 = d3.arc().outerRadius(radius - chartInset).innerRadius(radius - chartInset - barWidth)
      arc2 = d3.arc().outerRadius(radius - chartInset).innerRadius(radius - chartInset - barWidth)
@@ -457,14 +474,14 @@ var Needle = function () {
                      repaintGauge(progress, perc2);
 
                      var thetaRad = percToRad(perc2 / 2);
-                     var textX = -(self.len + 5) * Math.cos(thetaRad);
-                     var textY = -(self.len + 5) * Math.sin(thetaRad);
+                     var textX = -(this.len + 5) * Math.cos(thetaRad);
+                     var textY = -(this.len + 5) * Math.sin(thetaRad);
 
                      console.log(textX, textY)
-                     targetText.text('Current: 1,896,140')
+                     targetText.text('Goal: 3,000,000')
                                .attr('transform', "translate(" + textX + "," + textY + ")")
 
-                     actualText.text('Goal: 3,000,000')          
+                     actualText.text('Current: 1,896,140')          
 
                      return d3.select(self).attr('d', recalcPointerPos.call(self, progress));
                  };
