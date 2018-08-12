@@ -74,8 +74,8 @@
         <div class="panel-header">
           <div class="tabbable">
             <div class="twnav">
-              <a class="active" href="index.html">Tweets Over Time</a>
-              <a class="btab" href="b_tab.html">Tweets Heat Map</a>>
+              <a href="index.html">Tweets Over Time</a>
+              <a class="active" class="btab" href="b_tab.html">Tweets Heat Map</a>
             </div>
             <div class="tab-content">
                 <div class="tab-pane active" id="a_tab">
@@ -99,11 +99,9 @@
             </g>
           </svg>
           <span>
-            This is the <b>tweets by time period</b> for the hashtags.
+            This is the heat map of <b>tweets by day and time</b>.
             <br><br>
-            You can use your mousewheel on the upper larger chart or use the lower smaller chart by grabbing the edges to zoom into a timeframe.  Also when zoomed in you can move the greyed 'window' area in the lower chart around to view different time periods.
-            <br>
-            There is another chart in a separate tab also - click on the Tweets Heat Map to see the # of tweets based on day (Mon-Sun) and time.
+            As the color gets darker, more tweets are sent in that time period.  From this heat map, the insight could be what days and times have the most engagement with this topic.
           </span>
         </div> <!-- ends panel-header div -->
         <div id="line_chart" class="panel line-chart">
@@ -168,7 +166,7 @@
     </main>
 
     <script src="https://cdn.rawgit.com/john-guerra/netClusteringJs/master/netClustering.js"></script>
-    <script src="./static/assets/js/app.js"></script>
+    <script src="./static/assets/js/app2.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXMZcPmbx-qyDdEPt9_iKBqijxAnzum58&callback=initMap" async defer></script>
   </body>
 </html>
