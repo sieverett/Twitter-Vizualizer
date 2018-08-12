@@ -66,34 +66,6 @@ body {
     color: white;
 }
 
-/* Style the links inside the navigation bar */
-.twnav {
-    background-color: #333;
-    overflow: hidden;
-}
-
-.twnav a {
-    float: left;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 6px 6px;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-/* Change the color of links on hover */
-.twnav a:hover {
-    background-color: #ddd;
-    color: black;
-}
-
-/* Add a color to the active/current link */
-.twnav a.active {
-    background-color: #1096d9;
-    color: white;
-}
-
-
 /* columns */
 .column {
     float: left;
@@ -176,6 +148,33 @@ h2.leader {
   display: block;
 }
 
+/* Style the links inside the navigation bar */
+.twnav {
+    background-color: #333;
+    overflow: hidden;
+}
+
+.twnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 6px 6px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* Change the color of links on hover */
+.twnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* Add a color to the active/current link */
+.twnav a.active {
+    background-color: #1096d9;
+    color: white;
+}
+
 /* Force network diagram */
 
 .links line {
@@ -190,22 +189,22 @@ h2.leader {
 
 /* heat map */
 
-rect.bordered {
+.bordered {
         stroke: #E6E6E6;
         stroke-width:2px;   
       }
 
-text.mono {
+.mono {
         font-size: 9pt;
         font-family: Consolas, courier;
         fill: #aaa;
       }
 
-text.axis-workweek {
+.axis-workweek {
         fill: #000;
       }
 
-text.axis-worktime {
+.axis-worktime {
         fill: #000;
       }
 
