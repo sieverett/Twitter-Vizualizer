@@ -3,7 +3,7 @@
 <iframe src='//gifs.com/embed/w209-final-project-rRDK4L' frameborder='0' scrolling='no' width='640px' height='360px' style='-webkit-backface-visibility: hidden;-webkit-transform: scale(1);' ></iframe>
 
 
-![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+![Alt Text](https://j.gifs.com/rRDK4L.gif)
 
 
 Change.org Twitter Visualization
