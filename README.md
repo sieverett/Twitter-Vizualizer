@@ -21,5 +21,5 @@ Task #5: Describe any key influencer. e.g. name of user,  number of followers/fo
 
 ### Data:
 
-The dashbord uses Twitter data which was obtained using python tweepy and free tier subscription for the Twitter API.
+The dashbord uses Twitter data which was obtained using python tweepy and free tier subscription for the Twitter API. Example data and jupyter notebook can be obtained from the DATA directory.
 
