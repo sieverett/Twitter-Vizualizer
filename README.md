@@ -5,7 +5,7 @@
 
 ### Users:
 
-This dashboard was developed for Change.org as a final project for UC Berkeley's MIDS Program course W209. Through an interactive visualization dashboard, the project sought to enable petition campaigns to:
+This dashboard was developed for Change.org as a final project for UC Berkeley's MIDS Program W209 summer course 2018. Through an interactive visualization dashboard, the project sought to enable petition campaigns to:
 
 1. Track campaign progress 
 2. Sharpen strategy and tactics to reach broader audiences
